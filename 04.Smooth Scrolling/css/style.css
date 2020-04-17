@@ -1,0 +1,66 @@
+* , 
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html{
+    font-size: 10px;
+    font-family: 'Roboto' , sans-serif;
+    box-sizing: border-box;
+}
+header , section{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+header{
+    background: linear-gradient(to right, rgba(195, 20, 50 ,0.9) 0%, rgba(87, 29, 129, 0.7) 100%) ,
+     url(../img/banner.jpg) center no-repeat fixed;
+    background-size: cover; 
+}
+nav{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    background: transparent;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+li{
+    display: inline-block;
+    margin: 2rem 3rem;
+}
+li a{
+    color: #f4f4f4;
+    text-decoration: none;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 400ms ease-in;
+}
+li a:hover , a.active{
+    color: #c77280;
+}
+section h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase ;
+    color: #c31432;
+}
+section:nth-child(odd){
+    background: #e1e1e1;
+}
+section:nth-child(even){
+    background: #444;
+}
