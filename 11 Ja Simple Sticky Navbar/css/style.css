@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    min-height: 1000px;
+    background-color: #444;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 100px;
+    transition: 0.5s ease-in;
+}
+header.sticky{
+    background: #f4f4f4;
+    padding: 20px 100px;
+    box-shadow: 1px 4px 7px 1px rgba(0,0,0,0.76);
+}
+header.sticky .logo , header.sticky nav a{
+    color: #444;
+}
+header .logo{
+    text-decoration: none;
+    color: #f4f4f4;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+nav{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav a{
+    text-decoration: none;
+    color: #f4f4f4;
+    margin: 0 15px;
+    position: relative;
+    transition: 0.5s ease-in-out;
+}
+.banner{
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url(../assets/shotstash_0194.jpg) no-repeat center;
+    background-size: cover;
+}
