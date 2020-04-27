@@ -2,59 +2,54 @@ const list = function() {
 
     const items = [...document.querySelectorAll(".item")];
 
-    function loop(array, callback) {
-        array.forEach(item => {
-            callback(item);
-        });
-    }
-
-    function diable(item) {
-        item.classList.add('disable');
-        item.addEventListener('animationend', _ => item.style.display = 'none');
-    }
-
     function active(item) {
         item.classList.remove('disable');
         item.style.display = 'block';
     }
 
-    function all() {
-        loop(items, item => {
-            active(item);
+    function diable(item) {
+        item.classList.add('disable');
+        item.addEventListener("animationend", _ => {
+            if (item.classList.contains('disable')) item.style.display = 'none';
+        }, {once: true});
+    }
+
+    function show(target) {
+        items.forEach(item => {
+            if (target == item.dataset.id) {
+                active(item)
+            } else if (target == 'all') {
+                active(item);
+            } else {
+                diable(item);
+            }
         });
+    }
+
+    function all() {
+        show('all');
     }
  
     function web() {
-        all();
-        loop(items.filter(item => item.dataset.id !== 'web'), item => {
-            diable(item);
-        });
+        show('web');
     }
 
     function responsive(){
-        all();
-        loop(items.filter(item => item.dataset.id !== 'responsive'), item => {
-            diable(item);
-        });
+        show('responsive');
     }
 
     function uiux(){
-        all();
-        loop(items.filter(item => item.dataset.id !== 'uiux'), item => {
-            diable(item);
-        });
+        show('uiux');
     }
   
     return {
         all,
-        responsive,
         web,
+        responsive,
         uiux,
     }
 }();
 
-const filterBtn  = [...document.querySelectorAll("#filter-btns li")].forEach(li => {
-    li.addEventListener('click', () => {
-        eval(`list.${li.dataset.target}()`);
-    });
-});;
+[...document.querySelectorAll("#filter-btns li")].forEach(li => {
+    li.addEventListener('click', () => eval(`list.${li.dataset.target}()`));
+});
