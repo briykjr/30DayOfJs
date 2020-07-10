@@ -1,16 +1,23 @@
-const deg = 6;
-const hr = document.getElementById('hr');
-const min = document.getElementById('min');
-const sec = document.getElementById('sec');
+(function () {
+    const config = {
+        deg: 6,
+    }
 
-setInterval( () => {
-    let day = new Date();
-    let clockH = day.getHours() * 30;
-    let clockMin = day.getMinutes() * deg;
-    let clockSec = day.getSeconds() *deg;
+    const hands = {
+        sec: document.getElementById('sec'),
+        min: document.getElementById('min'),
+        hr: document.getElementById('hr'),
+    };
 
-    hr.style.transform = `rotateZ( ${clockH + (clockMin/12)}deg)` ;
-    min.style.transform = `rotateZ( ${clockMin}deg)` ;
-    sec.style.transform = `rotateZ( ${clockSec}deg)` ;
+    setInterval(_ => {
+        let date = new Date();
 
-});
+        const clock = {
+            sec: date.getSeconds() * config.deg,
+            min: date.getMinutes() * config.deg,
+            hr: (date.getHours() * 30) + (min/12),
+        };
+        
+        for (let hand in hands) hands[hand].style.transform = `rotateZ(${clock[hand]}deg)`;
+    });
+})();

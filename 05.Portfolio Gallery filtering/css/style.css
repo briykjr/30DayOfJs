@@ -56,7 +56,28 @@ ul li.active{
     float: left;
     width: 33.3%;
     padding: 1.5rem;
-    transition: transform 0.5 ease-in-out;
+    animation: scaleIn 1s linear forwards;
+}
+.gallery .item.disable{
+    animation: scaleOut 1s linear forwards;
+}
+
+@keyframes scaleOut {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .item img{
